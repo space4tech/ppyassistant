@@ -6,6 +6,7 @@ const {
   respondGetWitness
 } = require("./lib/getwitness");
 const { respondBlockchainInfo } = require("./lib/blockchaininfo");
+const { getNodesInfo } = require("./lib/nodesinfo");
 const { testAuthenticationOTP } = require("./lib/auth");
 const { cleanIntent, setIntent, sendChunkedMessage } = require("./lib/utils");
 const { bot } = require("./lib/telegram");
@@ -31,6 +32,9 @@ if (settings.chatId) {
       `Peerplays assistant is here, check the options available in the menu... `
     );
   })();
+  if(settings.remoteNodes.length > 0){
+    consts.menu = consts.menu2;
+  }
 }
 
 //Menu
@@ -66,6 +70,12 @@ bot.onText(/(\/b|blockchain info|block info)/i, async () => {
 bot.onText(/(\/b|get witness|Get witness)/i, async () => {
   promptIntent = cleanIntent();
   respondGetWitness();
+});
+
+// get info from nodes
+bot.onText(/(\/b|nodes info|Nodes Info)/i, async () => {
+  promptIntent = cleanIntent();
+  getNodesInfo();
 });
 
 

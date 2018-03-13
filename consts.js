@@ -15,3 +15,14 @@ exports.menu = {
   }
 };
 
+
+exports.menu2 = {
+  reply_markup: {
+    keyboard: [
+      ["🔎 Blockchain info", //return head_block_num, head_block_age, next_maintenance_time, participation, active_witnesses
+       "📄 Get witness"], //return total_votes, total_missed, last_confirmed_block_num
+      ["🔎 Nodes info"]
+    ]
+  }
+};
+
